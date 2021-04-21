@@ -6,7 +6,9 @@ from utils import noise, log_probs2indices
 import torch
 import torch.nn as nn
 from torch import optim
-
+"""
+code is based on https://github.com/migonch/unsupervised_mt/blob/master/unsupervised_mt/train.py
+"""
 
 class Trainer:
     def __init__(self, frozen_src2tgt: Seq2Seq, frozen_tgt2src: Seq2Seq,
@@ -169,17 +171,17 @@ class Trainer:
 
         return core_loss.item(), discriminator_loss.item()
 
-    def load(self, directory):
-        for layer, name in [(self.__getattribute__(name), name)
-                            for name in ['src_embedding', 'tgt_embedding', 'encoder_rnn', 'decoder_rnn',
-                                         'src_hat', 'tgt_hat', 'discriminator']]:
-            layer.load_state_dict(torch.load(directory + name))
+#     def load(self, directory):
+#         for layer, name in [(self.__getattribute__(name), name)
+#                             for name in ['src_embedding', 'tgt_embedding', 'encoder_rnn', 'decoder_rnn',
+#                                          'src_hat', 'tgt_hat', 'discriminator']]:
+#             layer.load_state_dict(torch.load(directory + name))
 
-    def save(self, directory):
-        for layer, name in [(self.__getattribute__(name), name)
-                            for name in ['src_embedding', 'tgt_embedding', 'encoder_rnn', 'decoder_rnn',
-                                         'src_hat', 'tgt_hat', 'discriminator']]:
-            torch.save(layer.state_dict(), directory + name)
+#     def save(self, directory):
+#         for layer, name in [(self.__getattribute__(name), name)
+#                             for name in ['src_embedding', 'tgt_embedding', 'encoder_rnn', 'decoder_rnn',
+#                                          'src_hat', 'tgt_hat', 'discriminator']]:
+#             torch.save(layer.state_dict(), directory + name)
 
     def predict(self, batch, length, l1='src', l2='tgt', n_iters=None):
         model = {('src', 'src'): self.src2src, ('src', 'tgt'): self.src2tgt,
