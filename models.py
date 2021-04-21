@@ -1,6 +1,3 @@
-# -*- coding: utf-8 -*-
-# Author: Ilya Gusev
-# Description: PyTorch models
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -9,6 +6,9 @@ from torch.nn.utils.rnn import pack_padded_sequence as pack
 from torch.nn.utils.rnn import pad_packed_sequence as unpack
 import numpy as np
 
+"""
+Code is based on https://github.com/Visonew/UNMT/blob/master/src/models.py
+"""
 
 class Embedding(nn.Module):
     def __init__(self, emb_matrix, requires_grad=True):
