@@ -7,7 +7,7 @@ from torch.nn.utils.rnn import pad_packed_sequence as unpack
 import numpy as np
 
 """
-Code is based on https://github.com/Visonew/UNMT/blob/master/src/models.py
+Code is based on https://github.com/IlyaGusev/UNMT/blob/master/src/models.py
 """
 
 class Embedding(nn.Module):
