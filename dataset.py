@@ -6,7 +6,9 @@ from pathlib import Path
 from utils import load_embeddings, load_word2nearest, load_train_and_test
 from vocabulary import Vocabulary
 from tqdm import tqdm
-
+"""
+code is based on https://github.com/migonch/unsupervised_mt/blob/master/unsupervised_mt/dataset.py
+"""
 
 class Dataset:
     def __init__(self, corp_paths, emb_paths, pairs_paths, max_length=10, test_size=0.1):
