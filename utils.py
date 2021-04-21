@@ -7,6 +7,9 @@ import torch
 from pathlib import Path
 from sklearn.model_selection import train_test_split
 
+"""
+code is based on https://github.com/migonch/unsupervised_mt/blob/master/unsupervised_mt/utils.py
+"""
 
 def unicode_to_ascii(s):
     return ''.join(
