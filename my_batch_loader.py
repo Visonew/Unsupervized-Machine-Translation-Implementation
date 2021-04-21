@@ -67,39 +67,4 @@ class BatchLoader:
                 'tgt': [t_length, t_padded_batches]
             }
 
-    def load_batch(self, test=False):
-        if test is False:
-            temp_src = next(self.load_monolingual_batch(self.data_loader['train']['src']))
-            temp_tgt = next(self.load_monolingual_batch(self.data_loader['train']['tgt']))
-
-            length = \
-                {
-                    'src': temp_src[0],
-                    'tgt': temp_tgt[0]
-                }
-            batch = \
-                {
-                    'src': temp_src[1].transpose(0, 1),
-                    'tgt': temp_tgt[1].transpose(0, 1)
-                }
-            return length, batch
-        else:
-            temp_src = next(self.load_monolingual_batch(self.data_loader['test']['src']))
-            temp_tgt = next(self.load_monolingual_batch(self.data_loader['test']['tgt']))
-
-            length = \
-                {
-                    'src': temp_src[0],
-                    'tgt': temp_tgt[0]
-                }
-            batch = \
-                {
-                    'src': temp_src[1].transpose(0, 1),
-                    'tgt': temp_tgt[1].transpose(0, 1)
-                }
-            return length, batch
-
-    def load_monolingual_batch(self, data_loader):
-        for x in data_loader:
-            yield x
 
